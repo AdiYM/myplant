@@ -32,7 +32,7 @@
         <div class="container">
           <div class="flex items-center justify-between relative">
             <div class="px-4 flex md:px-9">
-              <a href="#home" class="flex items-center py-6">
+              <a href="{{ url_for('index') }}" class="flex items-center py-6">
                 <img
                   src="{{ url_for('static', filename='images/logo-footer.png') }}"
                   alt=""
@@ -68,35 +68,35 @@
                   <li class="group">
                     <a
                       class="text-base text-dark py-2 mx-8 group-hover:text-primary md:group-hover:text-black flex"
-                      href="#"
+                      href="{{ url_for('index') }}"
                       >Beranda</a
                     >
                   </li>
                   <li class="group">
                     <a
                       class="text-base text-dark py-2 mx-8 group-hover:text-primary md:group-hover:text-black flex"
-                      href="#our"
+                      href="{{ url_for('index') }}"
                       >Visi Kami</a
                     >
                   </li>
                   <li class="group">
                     <a
                       class="text-base text-dark py-2 mx-8 group-hover:text-primary md:group-hover:text-black flex"
-                      href="#how"
+                      href="{{ url_for('index') }}"
                       >Bagaimana</a
                     >
                   </li>
                   <li class="group">
                     <a
                       class="text-base text-dark py-2 mx-8 group-hover:text-primary md:group-hover:text-black flex"
-                      href="#why"
+                      href="{{ url_for('index') }}"
                       >Kenapa</a
                     >
                   </li>
                   <li class="group">
                     <a
                       class="text-base text-dark py-2 mx-8 group-hover:text-primary md:group-hover:text-black flex"
-                      href="/templates/prediksi.html"
+                      href="{{ url_for('prediksi') }}"
                       >Ayo prediksi</a
                     >
                   </li>
