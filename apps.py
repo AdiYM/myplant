@@ -11,9 +11,15 @@ tanaman_conditions = {
         'tanah': 'liat'
     },
     'cabe': {
-        'cuaca': 'berawan',
-        'suhu': '',
-        'tempat': 'perkotaan',
+        'cuaca': 'cerah',
+        'suhu': 'sampai',
+        'tempat': 'greenhouse',
+        'tanah': 'liat'
+    },
+    'cabe': {
+        'cuaca': 'cerah',
+        'suhu': 'sampai',
+        'tempat': 'pekotaan',
         'tanah': 'liat'
     },
     'terong': {
