@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <style>
+      .background-image {
+        background-image: url('{{ url_for("static", filename="images/1.png") }}');
+      }
+      .selectable {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .selectable:hover {
+        transform: scale(1.05);
+      }
+
+      .selectable img {
+        border: none; /* Hapus border dari gambar secara default */
+      }
+
+      .selectable.selected img {
+        border: 2px solid #65A30D; /* Tambahkan border pada gambar saat dipilih */
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body class="bg-backg">
+    <!-- Header Start -->
+    <header>
+      <div
+        class="bg-primary fixed top-0 left-0 right-0 w-full flex items-center z-10 shadow-xl font-ibm"
+      >
+        <div class="container">
+          <div class="flex items-center justify-between relative">
+            <div class="px-4 flex md:px-9">
+              <a href="#home" class="flex items-center py-6">
+                <img
+                  src="{{ url_for('static', filename='images/logo-footer.png') }}"
+                  alt=""
+                  class="block mr-2 w-6 h-7 md:w-9 md:h-10 md:mr-4"
+                />
+                <span class="text-white text-base font-bold md:text-xl"
+                  >AgriPredict</span
+                >
+              </a>
+            </div>
+            <div class="flex items-center px-4">
+              <button
+                id="hamburger"
+                name="hamburger"
+                type="button"
+                class="block absolute right-4 md:hidden"
+              >
+                <span
+                  class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out origin-top-left"
+                ></span>
+                <span
+                  class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out"
+                ></span>
+                <span
+                  class="w-[30px] h-[2px] my-2 block bg-white transition duration-300 ease-in-out origin-bottom-left"
+                ></span>
+              </button>
+              <nav
+                id="nav-menu"
+                class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full md:block md:static md:max-w-full md:shadow-none md:rounded-none md:bg-transparent"
+              >
+                <ul class="block md:flex md:text-white">
+                  <li class="group">
+                    <a
+                      class="text-base text-dark py-2 mx-8 group-hover:text-primary md:group-hover:text-black flex"
+                      href="#"
+                      >Beranda</a
+                    >
+                  </li>
+                  <li class="group">
+                    <a
+                      class="text-base text-dark py-2 mx-8 group-hover:text-primary md:group-hover:text-black flex"
+                      href="#our"
+                      >Visi Kami</a
+                    >
+                  </li>
+                  <li class="group">
+                    <a
+                      class="text-base text-dark py-2 mx-8 group-hover:text-primary md:group-hover:text-black flex"
+                      href="#how"
+                      >Bagaimana</a
+                    >
+                  </li>
+                  <li class="group">
+                    <a
+                      class="text-base text-dark py-2 mx-8 group-hover:text-primary md:group-hover:text-black flex"
+                      href="#why"
+                      >Kenapa</a
+                    >
+                  </li>
+                  <li class="group">
+                    <a
+                      class="text-base text-dark py-2 mx-8 group-hover:text-primary md:group-hover:text-black flex"
+                      href="prediksi.html"
+                      >Ayo prediksi</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End -->
+    <!-- Jumbotron Start -->
+    <div>
+      <div
+        class="background-image relative bg-primary bg-opacity-80 bg-cover bg-center w-full h-[183px] mt-[76px] font-ibm md:h-[277px]"
+      >
+        <div class="absolute inset-0 bg-primary opacity-80 w-full"></div>
+        <div class="relative z-5 container flex items-center h-full">
+          <p
+            class="pl-5 text-white text-xl font-semibold leading-normal subpixel-antialiased-antialiased uppercase md:hidden"
+          >
+            Makan apa yang kamu <br />
+            tanam, tanaman apa yang <br />
+            kamu makan
+          </p>
+          <p
+            class="hidden pl-5 text-white text-xl font-semibold leading-normal subpixel-antialiased-antialiased uppercase md:block md:text-center md:text-4xl md:ml-10"
+          >
+            Makan apa yang kamu tanam, tanaman apa yang kamu makan
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron End -->
+    <!-- Section Start -->
+    <section>
+      <div>
+        <div class="mt-5 ml-5 md:my-[68px]">
+          <p
+            class="text-xl font-bold md:text-center md:text-[56px] text-secondary"
+          >
+            Whats your plant?
+          </p>
+        </div>
+      <form id="formTanaman" method="POST" action="/prediksi">
+        <input type="hidden" name="plant_id" id="plant_id" value="" required>
+        
+          <div class="grid grid-cols-3 mt-5 md:grid-cols-4 md:ml-12">
+            <div
+              id="cabe"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle1.png') }}"
+                alt="photo 1"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl md:text-center">cabe</p>
+            </div>
+            <div
+              id="terong"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle2.png') }}"
+                alt="photo 2"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl">terong</p>
+            </div>
+            <div
+              id="toge"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle3.png') }}"
+                alt="photo 3"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl">Toge</p>
+            </div>
+            <div
+              id="tomat"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle4.png') }}"
+                alt="photo 4"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl">Tomat</p>
+            </div>
+            <div
+              id="wortel"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle5.png') }}"
+                alt="photo 5"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl">Wortel</p>
+            </div>
+            <div
+              id="Kacang"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle6.png') }}"
+                alt="photo 6"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl">Kacang Panjang</p>
+            </div>
+            <div
+              id="seledri"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle7.png') }}"
+                alt="photo 7"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl">seledri</p>
+            </div>
+            <div
+              id="bombai"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle8.png') }}"
+                alt="photo 8"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl">Bawang Bombai</p>
+            </div>
+            <div
+              id="merah"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle9.png') }}"
+                alt="photo 9"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl">Bawang Merah</p>
+            </div>
+            <div
+              id="jahe"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle10.png') }}"
+                alt="photo 10"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl">Jahe</p>
+            </div>
+            <div
+              id="brokoli"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle11.png') }}"
+                alt="photo 11"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl">Brokoli</p>
+            </div>
+            <div
+              id="lengkuas"
+              class="p-4 text-center md:flex md:flex-col md:items-center sayuran selectable"
+            >
+              <img
+                src="{{ url_for('static', filename='images/Rectangle12.png') }}"
+                alt="photo 12"
+                class="md:w-[237px] md:h-[206px] "
+              />
+
+              <p class="mt-4 md:text-2xl">Lengkuas</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex-row justify-center items-center mx-auto md:mt-[100px]">
+          <div class="flex flex-col items-center">
+            <div class="my-4 md:my-9">
+              <label
+                for="cuaca"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-secondary md:text-4xl"
+                >Cuaca</label
+              >
+              <select
+                id="cuaca"
+                name="cuaca"
+                class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[318px] md:w-[747px] p-3 md:p-6 dark:bg-white dark:border-white dark:text-slate-400 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-lg"
+              >
+                <option selected>Pilih Cuaca</option>
+                <option value="cerah">Cerah</option>
+                <option value="berawan">Berawan</option>
+                <option value="hujan">Hujan</option>
+              </select>
+            </div>
+            <div class="my-4 md:my-9">
+              <label
+                for="suhu"
+                name="suhu"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-secondary md:text-4xl"
+                >Suhu</label
+              >
+              <select
+                id="suhu"
+                name="suhu"
+                class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[318px] md:w-[747px] p-3 md:p-6 dark:bg-white dark:border-white dark:text-slate-400 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-lg"
+              >
+                <option selected>Pilih Suhu</option>
+                <option value="kurang">Kurang dari 10 Derajat</option>
+                <option value="sampai">11-30 Derajat</option>
+                <option value="lebih">Lebih dari 30 Derajat</option>
+              </select>
+            </div>
+            <div class="my-4 md:my-9">
+              <label
+                for="tempat"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-secondary md:text-4xl"
+                >Tempat</label
+              >
+              <select
+                id="tempat"
+                name="tempat"
+                class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[318px] md:w-[747px] p-3 md:p-6 dark:bg-white dark:border-white dark:text-slate-400 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-lg"
+              >
+                <option selected>Pilih Tempat</option>
+                <option value="greenhouse">Greenhouse (Rumah Kaca)</option>
+                <option value="perkotaan">Perkotaan</option>
+                <option value="pedesaan">Pedesaan</option>
+              </select>
+            </div>
+            <div class="my-4 md:my-9">
+              <label
+                for="tanah"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-secondary md:text-4xl"
+                >Tanah</label
+              >
+              <select
+                id="tanah"
+                name="tanah"
+                class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[318px] md:w-[747px] p-3 md:p-6 dark:bg-white dark:border-white dark:text-slate-400 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-lg"
+              >
+                <option selected>Pilih Tanah</option>
+                <option value="lempung">Tanah Lempung</option>
+                <option value="pasir">Tanah Pasir</option>
+                <option value="liat">Tanah Liat</option>
+                <option value="gambut">Tanah Gambut</option>
+                <option value="vulkanik">Tanah Vulkanik</option>
+              </select>
+            </div>
+            <div class="mt-14 mx-auto items-center justify-center flex mb-24">
+              <button
+                type="submit"
+                class="bg-primary w-[185px] h-[40px] md:w-[435px] md:h-[93px] md:text-4xl rounded-xl shadow-xl text-white hover:bg-hover"
+              >
+                Cek Hasil
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+    <!-- Section End -->
+
+    <!-- Footer Start -->
+    <!-- Footer Start -->
+    <div
+      class="relative bg-primary bg-opacity-80 bg-cover bg-center w-full h-full mt-[45px] bottom-0 left-0 right-0 font-ibm"
+      style="background-image: url('/asset/bg-footer.png')"
+    >
+      <div class="absolute inset-0 bg-primary opacity-80"></div>
+      <div class="relative z-5 container">
+        <div class="container md:flex md:justify-between">
+          <!-- logo -->
+          <div class="md:flex md:w-1/3 items-center md:ml-[163px]">
+            <div class="flex items-center pb-4">
+              <img
+                class="block mx-auto pt-5 w-16 h-19 md:w-24 md:h-32"
+                src="{{ url_for('static', filename='images/logo-footer.png') }}"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <!-- input follow us -->
+          <div class="md:mr-[183px] md:my-10 md:w-1/3">
+            <div class="flex items-center">
+              <input
+                type="text"
+                placeholder="Your name Here"
+                class="w-72 h-12 mx-auto text-sm pl-2 text-primary shadow-md rounded-md"
+              />
+            </div>
+            <div class="flex items-center pt-4">
+              <input
+                type="text"
+                placeholder="Your massage here"
+                class="w-72 h-12 mx-auto text-sm pl-2 text-primary shadow-md rounded-md"
+              />
+            </div>
+            <div class="flex items-center mx-auto pt-4">
+              <div class="flex mx-auto">
+                <div class="pr-4">
+                  <input
+                    type="text"
+                    placeholder="Your email here"
+                    class="w-44 h-12 text-sm pl-2 text-primary shadow-md pr-4 rounded-md"
+                  />
+                </div>
+                <div>
+                  <button
+                    class="w-24 h-12 border-2 text-white hover:bg-white hover:text-slate-800 rounded-md"
+                  >
+                    Sumbit
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center pt-9 font-ibm">
+              <div class="flex mx-auto">
+                <p class="text-base font-medium mr-20 text-white">FOLLOW US</p>
+                <div class="flex">
+                  <img
+                    class="w-8 mr-1"
+                    src="{{ url_for('static', filename='images/ig.png') }}"
+                    alt=""
+                  />
+                  <img
+                    class="w-8 mx-1"
+                    src="{{ url_for('static', filename='images/fb.png') }}"
+                    alt=""
+                  />
+                  <img
+                    class="w-8 mx-2"
+                    src="{{ url_for('static', filename='images/yt.png') }}"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- contact us -->
+          <div class="md:w-1/3 md:mr-30 md:mt-4">
+            <div class="flex items-center pt-8 pb-8 font-ibm">
+              <div class="flex mx-auto">
+                <div class="flex mr-12">
+                  <div class="text-white">
+                    <p class="font-medium text-base pb-2">CONTANT US</p>
+                    <p class="mt-3 text-sm">
+                      <span class="font-medium">Address:</span><br />
+                      Universita Amikom <br />
+                      Yogyokarta
+                    </p>
+                    <p class="mt-3 text-sm">
+                      <span class="font-medium">Call:</span><br />085712016460
+                    </p>
+                  </div>
+                  <!-- navigate -->
+                  <div class="flex flex-col text-white ml-12 md:ml-20">
+                    <p class="text-white text-base font-medium">NAVIGATE</p>
+                    <a class="mt-3 mb-2 text-sm" href="#">Home</a>
+                    <a class="my-2 text-sm" href="#">About</a>
+                    <a class="my-2 text-sm" href="#">Contact</a>
+                    <a class="my-2 text-sm" href="#">Location</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+    <!-- Footer End -->
+    <!-- Result Start -->
+    <section id="result" class="hidden mt-14 md:mt-24 font-ibm">
+      <div class="container">
+        <div class="flex justify-center">
+          <div
+            id="result-message"
+            class="p-4 text-center text-lg font-semibold"
+          ></div>
+        </div>
+      </div>
+    </section>
+    <!-- Result End -->
+    <script src="/static/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const plantElements = document.querySelectorAll(".selectable");
+        const plantIdInput = document.getElementById("plant_id");
+        const form = document.getElementById("formTanaman");
+
+        plantElements.forEach(function (element) {
+          element.addEventListener("click", function () {
+            plantElements.forEach(function (elem) {
+              elem.classList.remove("selected"); // Hapus kelas 'selected' dari semua elemen
+            });
+            this.classList.add("selected"); // Tambahkan kelas 'selected' ke elemen yang diklik
+            plantIdInput.value = this.id;
+          });
+        });
+
+        form.addEventListener("submit", function (event) {
+          if (!plantIdInput.value) {
+            event.preventDefault();
+            alert("Please select a plant.");
+          }
+          if (document.getElementById("cuaca").value === "Pilih Cuaca") {
+            event.preventDefault();
+            alert("Please select a weather.");
+          }
+          if (document.getElementById("suhu").value === "Pilih Suhu") {
+            event.preventDefault();
+            alert("Please select a temperature.");
+          }
+          if (document.getElementById("tempat").value === "Pilih Tempat") {
+            event.preventDefault();
+            alert("Please select a location.");
+          }
+          if (document.getElementById("tanah").value === "Pilih Tanah") {
+            event.preventDefault();
+            alert("Please select a soil type.");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
